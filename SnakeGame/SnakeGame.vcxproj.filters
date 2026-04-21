@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Enum">
+      <UniqueIdentifier>{1c4c1d38-cb2a-4234-8ea4-7c5c729ee1b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Scene">
+      <UniqueIdentifier>{df63a242-c6c5-4321-b15c-e8de24487dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Game">
+      <UniqueIdentifier>{8e65d2c0-5da2-477c-beaf-c8578c580608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Game\GameObject">
+      <UniqueIdentifier>{f39bb4e3-3490-493b-a0db-8b2e4064987a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\UIElement">
+      <UniqueIdentifier>{dbf0f5db-ba52-4673-ac9b-ce99c4087273}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLVLSelect.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RecordTable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneRecordTable.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneSetting.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckBox.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSprite.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="ScenePlay.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneGameOver.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="GameState.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneQuestionYesNo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Exit.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="QuestionEnterName.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEnterName.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameObject.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneFactory.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCommand.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSceneRequest.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStateType.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenuOptions.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFunctionality.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLVLComplexityOptions.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="RecordTable.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Record.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTableRecordRequest.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuLVLSelect.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneRecordTable.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSettingStateType.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneSetting.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckBox.h">
+      <Filter>Файлы заголовков\UIElement</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Файлы заголовков\Game\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSprite.h">
+      <Filter>Файлы заголовков\Game\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ScenePlay.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGameOver.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverOptions.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestionYesNo.h">
+      <Filter>Файлы заголовков\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneQuestionYesNo.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Exit.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="QuestionEnterName.h">
+      <Filter>Файлы заголовков\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEnterName.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
