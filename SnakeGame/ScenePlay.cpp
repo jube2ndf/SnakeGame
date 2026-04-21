@@ -73,6 +73,9 @@ SnakeGame::SceneCommand SnakeGame::Scene::ScenePlay::handleInput(sf::Event& even
 	{
 		this->snake.SetDirection(Game::GameObject::SnakeDirection::Left);
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::P)) {
+		return SnakeGame::SceneCommand(GameSceneRequest::Push, GameSceneType::Pause);
+	}
 
     return SnakeGame::SceneCommand(GameSceneRequest::None);
 }
@@ -80,7 +83,7 @@ SnakeGame::SceneCommand SnakeGame::Scene::ScenePlay::handleInput(sf::Event& even
 SnakeGame::SceneCommand SnakeGame::Scene::ScenePlay::update(float dt)
 {
 	// Update snake
-	this->snake.Move(dt);
+	this->snake.Move(dt, this->bounds);
 	if (!this->snake.HasSnakeCollisionWithRect(this->background.getGlobalBounds())
 		|| this->snake.CheckSnakeCollisionWithHimself()
 		|| this->snake.FullCheckCollisions(this->rocks.begin(), this->rocks.end()))

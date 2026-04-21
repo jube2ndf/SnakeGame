@@ -12,6 +12,7 @@ namespace SnakeGame
 			{
 			private:
 				sf::Sprite sprite;
+				sf::Vector2i gridPos;
 			public:
 				GameSprite();
 				GameSprite(float desiredWidth,
@@ -30,6 +31,7 @@ namespace SnakeGame
 				const sf::Sprite& GetSprite();
 				sf::Vector2f GetVectorBetweenSprites(const GameSprite& spriteTo);
 				float GetManhattanDistanceBetweenSprites(const GameSprite& spriteTo);
+				void SetGridPosition(const sf::Vector2i& gridPos, const sf::FloatRect& bounds);
 
 				template<typename Iterator>
 				bool FullCheckCollisions(Iterator first, Iterator last){

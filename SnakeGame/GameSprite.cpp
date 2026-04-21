@@ -1,4 +1,5 @@
 #include "GameSprite.h"
+#include "Settings.h"
 
 SnakeGame::Game::GameObject::GameSprite::GameSprite()
 {
@@ -30,8 +31,16 @@ void SnakeGame::Game::GameObject::GameSprite::SetSize(float newWidth, float newH
 
 void SnakeGame::Game::GameObject::GameSprite::SetRandomPosition(const sf::FloatRect& rect, const std::list<GameObject::GameSprite>& collection)
 {
+	int cols = (rect.width - 20) / SnakeGame::SNAKE_SIZE;
+	int rows = (rect.height - 20) / SnakeGame::SNAKE_SIZE;
+
+	sf::Vector2i grid;
+
 	do {
-		this->SetRandomSpritePositionInRectangle(rect);
+		grid.x = rand() % cols;
+		grid.y = rand() % rows;
+
+		this->SetGridPosition(grid, rect);
 	} while (this->FullCheckCollisions(collection.begin(), collection.end()));
 }
 
@@ -54,6 +63,16 @@ void SnakeGame::Game::GameObject::GameSprite::SetRandomSpritePositionInRectangle
 	this->sprite.setPosition(
 		rand() / (float)RAND_MAX * (rect.width - 2 * Width) + rect.left + Width,
 		rand() / (float)RAND_MAX * (rect.height - 2 * Height) + rect.top + Height
+	);
+}
+
+void SnakeGame::Game::GameObject::GameSprite::SetGridPosition(const sf::Vector2i& gridPos, const sf::FloatRect& bounds)
+{
+	this->gridPos = gridPos;
+
+	this->sprite.setPosition(
+		bounds.left + gridPos.x * SnakeGame::SNAKE_SIZE,
+		bounds.top + gridPos.y * SnakeGame::SNAKE_SIZE
 	);
 }
 

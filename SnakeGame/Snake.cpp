@@ -117,7 +117,7 @@ Game::GameObject::Snake::Snake(float startSpeed)
 	assert(this->textures[(size_t)SnakePart::Body].loadFromFile(SnakeGame::TEXTURE_PATH + BODY_TEXTURE_ID));
 	assert(this->textures[(size_t)SnakePart::BodyBend].loadFromFile(SnakeGame::TEXTURE_PATH + BODY_BEND_TEXTURE_ID));
 	assert(this->textures[(size_t)SnakePart::Tail].loadFromFile(SnakeGame::TEXTURE_PATH + TAIL_TEXTURE_ID));
-	
+
 	// Init snake state
 	for (int i = 0; i < INITIAL_SNAKE_SIZE; ++i) {
 		switch (i)
@@ -198,7 +198,7 @@ bool SnakeGame::Game::GameObject::Snake::FullCheckCollisions(std::list<SnakeGame
 
 void SnakeGame::Game::GameObject::Snake::SetDirection(SnakeDirection newSnakeDirection)
 {
-	this->direction = newSnakeDirection;
+	this->nextDirection = newSnakeDirection;
 }
 
 const std::list<SnakeGame::Game::GameObject::GameSprite> SnakeGame::Game::GameObject::Snake::getBody()
@@ -206,9 +206,22 @@ const std::list<SnakeGame::Game::GameObject::GameSprite> SnakeGame::Game::GameOb
 	return this->body;
 }
 
-void SnakeGame::Game::GameObject::Snake::Move(float df)
+void SnakeGame::Game::GameObject::Snake::Move(float df, const sf::FloatRect& bounds)
 {
 	float shift = this->speed * df;
+	if (IsHeadInCellCenter(bounds))
+	{
+		// запрет разворота назад
+		if (!(
+			(direction == SnakeDirection::Up && nextDirection == SnakeDirection::Down) ||
+			(direction == SnakeDirection::Down && nextDirection == SnakeDirection::Up) ||
+			(direction == SnakeDirection::Left && nextDirection == SnakeDirection::Right) ||
+			(direction == SnakeDirection::Right && nextDirection == SnakeDirection::Left)
+			))
+		{
+			this->direction = nextDirection;
+		}
+	}
 	const sf::Vector2f direction = this->getVectorDirection() * shift / SNAKE_SIZE;
 	auto prevHead = this->head;
 
@@ -221,6 +234,10 @@ void SnakeGame::Game::GameObject::Snake::Move(float df)
 		prevHead->SetPosition(this->head->getPosition());
 	}
 	this->head->SetPosition(this->head->getPosition() + direction);
+	if (IsHeadInCellCenter(bounds))
+	{
+		SnapToGrid(bounds);
+	}
 
 	auto nextTail = std::next(this->tail);
 	auto tailDirection = this->tail->GetVectorBetweenSprites(*nextTail);
@@ -236,6 +253,32 @@ void SnakeGame::Game::GameObject::Snake::Move(float df)
 	}
 
 	this->prevDirection = this->direction;
+}
+
+bool SnakeGame::Game::GameObject::Snake::IsHeadInCellCenter(const sf::FloatRect& bounds)
+{
+	sf::Vector2f pos = this->head->getPosition();
+
+	float localX = pos.x - bounds.left;
+	float localY = pos.y - bounds.top;
+
+	float modX = fmod(localX, SNAKE_SIZE);
+	float modY = fmod(localY, SNAKE_SIZE);
+
+	const float epsilon = 1.0f; // допуск
+
+	return (std::abs(modX) < epsilon || std::abs(modX - SNAKE_SIZE) < epsilon) &&
+		(std::abs(modY) < epsilon || std::abs(modY - SNAKE_SIZE) < epsilon);
+}
+
+void SnakeGame::Game::GameObject::Snake::SnapToGrid(const sf::FloatRect& bounds)
+{
+	sf::Vector2f pos = this->head->getPosition();
+
+	float x = std::round((pos.x - bounds.left) / SNAKE_SIZE) * SNAKE_SIZE + bounds.left;
+	float y = std::round((pos.y - bounds.top) / SNAKE_SIZE) * SNAKE_SIZE + bounds.top;
+
+	this->head->SetPosition({ x, y });
 }
 
 bool SnakeGame::Game::GameObject::Snake::HasSnakeCollisionWithRect(const sf::FloatRect& rect)

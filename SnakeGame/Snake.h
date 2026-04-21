@@ -36,12 +36,15 @@ namespace SnakeGame
 				
 				SnakeDirection direction = SnakeDirection::Up;
 				SnakeDirection prevDirection = SnakeDirection::Up;
+				SnakeDirection nextDirection = SnakeDirection::Up;
 				std::array<sf::Texture, (size_t)SnakePart::Count> textures;
 				sf::Vector2f getVectorDirection();
 				void SetHead(std::list<SnakeGame::Game::GameObject::GameSprite>::iterator it);
 				void GetRotationSprite(std::list<GameObject::GameSprite>::iterator it);
 				void SetTailSprite(std::list<SnakeGame::Game::GameObject::GameSprite>::iterator it);
 
+				sf::Vector2i gridPos;
+				sf::Vector2f targetPosition;
 			public:
 				Snake();
 				Snake(float startSpeed);
@@ -53,10 +56,11 @@ namespace SnakeGame
 				void SetDirection(SnakeDirection newSnakeDirection);
 				void Draw(sf::RenderWindow& windiw);
 				const std::list<SnakeGame::Game::GameObject::GameSprite> getBody();
-				void Move(float df);
+				void Move(float df, const sf::FloatRect& bounds);
 				bool HasSnakeCollisionWithRect(const sf::FloatRect& rect);
 				bool CheckSnakeCollisionWithHimself();
-
+				void SnapToGrid(const sf::FloatRect& bounds);
+				bool IsHeadInCellCenter(const sf::FloatRect& bounds);
 				void AddSpead(float value);
 			};
 		}
